@@ -4,13 +4,15 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
-using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace BootstrapBlazor.Components;
 
 /// <summary>
 /// 条码类型
 /// </summary>
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum EnumBarcodeType
 {
     CODE128,
@@ -33,6 +35,7 @@ public enum EnumBarcodeType
     pharmacode,
 }
 
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum EnumBarcodeTextAlign
 {
     Left,
@@ -40,6 +43,14 @@ public enum EnumBarcodeTextAlign
     Right,
 }
 
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum EnumTextPosition
+{
+    Bottom,
+    Top, 
+}
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum EnumBarcodeFont
 {
     Monospace,
@@ -49,8 +60,13 @@ public enum EnumBarcodeFont
     Cursive,
 }
 
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum EnumBarcodeFontOption
 {
+    [EnumMember(Value = "")]
+    Normal,
     Bold,
     Italic,
+    [EnumMember(Value = "bold italic")]
+    BoldItalic,
 }
