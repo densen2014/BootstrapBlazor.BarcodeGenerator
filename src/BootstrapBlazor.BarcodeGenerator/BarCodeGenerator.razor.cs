@@ -19,7 +19,7 @@ public partial class BarCodeGenerator : IAsyncDisposable
     [NotNull]
     private IJSRuntime? JS { get; set; }
 
-    private IJSObjectReference? module;
+    private IJSObjectReference? Module { get; set; }
     private DotNetObjectReference<BarCodeGenerator>? objRef;
 
     /// <summary>
@@ -63,7 +63,7 @@ public partial class BarCodeGenerator : IAsyncDisposable
         {
             if (!firstRender) return;
             objRef = DotNetObjectReference.Create(this);
-            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.BarcodeGenerator/BarCodeGenerator.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+            Module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.BarcodeGenerator/BarCodeGenerator.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
             await GenerateBarcode();
 
         }
@@ -103,7 +103,7 @@ public partial class BarCodeGenerator : IAsyncDisposable
             {
                 Options.Type = Type;
                 Options.Value = Value;
-                var res = await module!.InvokeAsync<string>("Gen", objRef, Element, Options);
+                var res = await Module!.InvokeAsync<string>("Gen", objRef, Element, Options);
                 if (OnResult != null)
                     await OnResult.Invoke(res);
             }
@@ -124,9 +124,9 @@ public partial class BarCodeGenerator : IAsyncDisposable
 
     async ValueTask IAsyncDisposable.DisposeAsync()
     {
-        if (module is not null)
+        if (Module is not null)
         {
-            await module.DisposeAsync();
+            await Module.DisposeAsync();
         }
         objRef?.Dispose();
     }
