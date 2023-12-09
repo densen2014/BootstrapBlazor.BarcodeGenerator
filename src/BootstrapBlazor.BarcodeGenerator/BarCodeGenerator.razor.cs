@@ -31,7 +31,7 @@ public partial class BarCodeGenerator : IAsyncDisposable
     /// 条码类型/ Barcode type
     /// </summary>
     [Parameter]
-    public EnumBarcodeType Type { get; set; } = EnumBarcodeType.CODE128;
+    public EnumBarcodeType? Type { get; set; } 
 
     /// <summary>
     /// 条码值/ Barcode value
@@ -97,12 +97,14 @@ public partial class BarCodeGenerator : IAsyncDisposable
         if (options != null)
             Options = options;
 
-        if (!string.IsNullOrWhiteSpace(Value))
+        if (!string.IsNullOrWhiteSpace(Value) && Options.Value!=null)
         {
             try
             {
-                Options.Type = Type;
-                Options.Value = Value;
+                if (Type != null)
+                    Options.Type = Type.Value;
+                if (Value != null)
+                    Options.Value = Value;
                 var res = await Module!.InvokeAsync<string>("Gen", objRef, Element, Options);
                 if (OnResult != null)
                     await OnResult.Invoke(res);
