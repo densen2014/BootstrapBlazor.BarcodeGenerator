@@ -17,7 +17,7 @@ public partial class BarCodeGenerator : IAsyncDisposable
 {
     [Inject]
     [NotNull]
-    private IJSRuntime? JS { get; set; }
+    private IJSRuntime? JSRuntime { get; set; }
 
     private IJSObjectReference? Module { get; set; }
     private DotNetObjectReference<BarCodeGenerator>? objRef;
@@ -63,7 +63,7 @@ public partial class BarCodeGenerator : IAsyncDisposable
         {
             if (!firstRender) return;
             objRef = DotNetObjectReference.Create(this);
-            Module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.BarcodeGenerator/BarCodeGenerator.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+            Module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.BarcodeGenerator/BarCodeGenerator.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
             await GenerateBarcode();
 
         }
