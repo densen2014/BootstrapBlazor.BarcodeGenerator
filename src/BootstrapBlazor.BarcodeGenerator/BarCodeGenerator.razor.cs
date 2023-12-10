@@ -57,11 +57,14 @@ public partial class BarCodeGenerator : IAsyncDisposable
     [Parameter]
     public Func<string, Task>? OnError { get; set; }
 
+    private bool FirstRender { get; set; } = true;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try
         {
             if (!firstRender) return;
+            FirstRender=false;
             objRef = DotNetObjectReference.Create(this);
             Module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.BarcodeGenerator/BarCodeGenerator.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
             await GenerateBarcode();
@@ -74,9 +77,11 @@ public partial class BarCodeGenerator : IAsyncDisposable
 
     }
 
-    //protected override async Task OnParametersSetAsync()
-    //{
-    //}
+    protected override async Task OnParametersSetAsync()
+    {
+        if (FirstRender) return;
+        await GenerateBarcode();
+    }
 
     [JSInvokable]
     public async Task GetError(string err)

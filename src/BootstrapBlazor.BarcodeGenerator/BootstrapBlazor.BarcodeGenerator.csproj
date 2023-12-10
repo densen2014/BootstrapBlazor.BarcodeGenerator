@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <PackageProjectUrl>https://github.com/densen2014/BootstrapBlazor.BarcodeGenerator</PackageProjectUrl>
         <RepositoryUrl>https://github.com/densen2014/BootstrapBlazor.BarcodeGenerator</RepositoryUrl>
         <RepositoryType>git</RepositoryType>

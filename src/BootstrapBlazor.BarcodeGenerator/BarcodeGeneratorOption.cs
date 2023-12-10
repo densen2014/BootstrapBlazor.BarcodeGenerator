@@ -33,7 +33,7 @@ public class BarcodeGeneratorOption
     /// 单个条形的宽度,默认值：2 / Width,default: 2
     /// </summary>
     [DisplayName("宽度")]
-    [Range(1, 4)]
+    [Range(1, 6)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int Width { get; set; } = 2;
 
@@ -41,7 +41,7 @@ public class BarcodeGeneratorOption
     /// 条形码的高度,默认值：100 / Height,default: 100
     /// </summary>
     [DisplayName("高度")]
-    [Range(10, 150)]
+    [Range(10, 300)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int Height { get; set; } = 100;
 
@@ -94,7 +94,7 @@ public class BarcodeGeneratorOption
     /// 文本边距,默认值：2
     /// </summary>
     [DisplayName("文字间距")]
-    [Range(15, 40)]
+    [Range(-30, 100)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int TextMargin { get; set; } = 2;
 
@@ -102,7 +102,7 @@ public class BarcodeGeneratorOption
     /// 字体大小,默认值：20
     /// </summary>
     [DisplayName("字体大小")]
-    [Range(8, 36)]
+    [Range(8, 52)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int FontSize { get; set; } = 20;
 
@@ -124,7 +124,7 @@ public class BarcodeGeneratorOption
     /// 间距,默认值：10
     /// </summary>
     [DisplayName("间距")]
-    [Range(0, 25)]
+    [Range(-30, 100)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int Margin { get; set; } = 10;
 
@@ -132,7 +132,7 @@ public class BarcodeGeneratorOption
     /// 顶部间距,默认值：undefined
     /// </summary>
     [DisplayName("顶部间距")]
-    [Range(15, 40)]
+    [Range(-30, 100)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int? MarginTop { get; set; }
 
@@ -140,7 +140,7 @@ public class BarcodeGeneratorOption
     /// 底部间距,默认值：undefined
     /// </summary>
     [DisplayName("底部间距")]
-    [Range(15, 40)]
+    [Range(-30, 100)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int? MarginBottom { get; set; }
 
@@ -148,7 +148,7 @@ public class BarcodeGeneratorOption
     /// 左边间距,默认值：undefined
     /// </summary>
     [DisplayName("左边间距")]
-    [Range(15, 40)]
+    [Range(-30, 100)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int? MarginLeft { get; set; }
 
@@ -156,7 +156,7 @@ public class BarcodeGeneratorOption
     /// 右边间距,默认值：undefined
     /// </summary>
     [DisplayName("右边间距")]
-    [Range(15, 40)]
+    [Range(-30, 100)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int? MarginRight { get; set; }
 
