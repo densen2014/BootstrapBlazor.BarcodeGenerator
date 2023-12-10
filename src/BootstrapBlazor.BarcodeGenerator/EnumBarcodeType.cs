@@ -4,6 +4,7 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
@@ -38,16 +39,24 @@ public enum EnumBarcodeType
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum EnumBarcodeTextAlign
 {
-    Left,
-    Center,
-    Right,
+    [Description("左对齐")]
+    left,
+
+    [Description("居中")]
+    center,
+
+    [Description("右对齐")]
+    right,
 }
 
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum EnumTextPosition
 {
-    Bottom,
-    Top, 
+    [Description("底部")]
+    bottom,
+
+    [Description("顶部")]
+    top, 
 }
 
 [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -63,10 +72,17 @@ public enum EnumBarcodeFont
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum EnumBarcodeFontOption
 {
+    [Description("一般")]
     [EnumMember(Value = "")]
-    Normal,
-    Bold,
-    Italic,
+    normal,
+
+    [Description("加粗")]
+    bold,
+
+    [Description("斜体")]
+    italic,
+
+    [Description("加粗斜体")]
     [EnumMember(Value = "bold italic")]
-    BoldItalic,
+    bold_italic,
 }

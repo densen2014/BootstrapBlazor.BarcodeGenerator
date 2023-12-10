@@ -97,7 +97,7 @@ public partial class BarCodeGenerator : IAsyncDisposable
         if (options != null)
             Options = options;
 
-        if (!string.IsNullOrWhiteSpace(Value) && Options.Value!=null)
+        if (!string.IsNullOrWhiteSpace(Value) || Options.Value!=null)
         {
             try
             {
