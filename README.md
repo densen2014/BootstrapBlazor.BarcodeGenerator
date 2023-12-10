@@ -1,6 +1,6 @@
 # Blazor BarcodeGenerator 条码生成器 组件  
 
-基于JsBarcode
+基于[JsBarcode]([https://github.com/fengyuanchen/cropperjs](https://github.com/lindell/JsBarcode))的Blazor组件
 
 示例:
 
