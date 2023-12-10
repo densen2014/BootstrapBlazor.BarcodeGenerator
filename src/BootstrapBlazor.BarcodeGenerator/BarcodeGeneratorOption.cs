@@ -75,7 +75,7 @@ public class BarcodeGeneratorOption
     public EnumBarcodeFont Font { get; set; } = EnumBarcodeFont.Monospace;
 
     /// <summary>
-    /// 文字对齐,默认值：“中心”
+    /// 文字对齐,默认值：'中心'
     /// </summary>
     [DisplayName("文字对齐")]
     //[JsonConverter(typeof(JsonStringEnumConverter))]
@@ -83,7 +83,7 @@ public class BarcodeGeneratorOption
     public EnumBarcodeTextAlign TextAlign { get; set; } = EnumBarcodeTextAlign.center;
 
     /// <summary>
-    /// 文字位置,默认值：“底部”
+    /// 文字位置,默认值：'底部'
     /// </summary>
     [DisplayName("文字位置")]
     //[JsonConverter(typeof(JsonStringEnumConverter))]
@@ -107,14 +107,14 @@ public class BarcodeGeneratorOption
     public int FontSize { get; set; } = 20;
 
     /// <summary>
-    /// 背景色,默认值：“#ffffff” (CSS color)
+    /// 背景色,默认值：'#ffffff' (CSS color)
     /// </summary>
     [DisplayName("背景色")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public string Background { get; set; }= "#ffffff";
 
     /// <summary>
-    /// 线条颜色,默认值：“#000000” (CSS color)
+    /// 线条颜色,默认值：'#000000' (CSS color)
     /// </summary>
     [DisplayName("线条颜色")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
@@ -129,7 +129,7 @@ public class BarcodeGeneratorOption
     public int Margin { get; set; } = 10;
 
     /// <summary>
-    /// 顶部间距,默认值：undefined
+    /// 顶部间距
     /// </summary>
     [DisplayName("顶部间距")]
     [Range(-30, 100)]
@@ -137,7 +137,7 @@ public class BarcodeGeneratorOption
     public int? MarginTop { get; set; }
 
     /// <summary>
-    /// 底部间距,默认值：undefined
+    /// 底部间距
     /// </summary>
     [DisplayName("底部间距")]
     [Range(-30, 100)]
@@ -145,7 +145,7 @@ public class BarcodeGeneratorOption
     public int? MarginBottom { get; set; }
 
     /// <summary>
-    /// 左边间距,默认值：undefined
+    /// 左边间距
     /// </summary>
     [DisplayName("左边间距")]
     [Range(-30, 100)]
@@ -153,7 +153,7 @@ public class BarcodeGeneratorOption
     public int? MarginLeft { get; set; }
 
     /// <summary>
-    /// 右边间距,默认值：undefined
+    /// 右边间距
     /// </summary>
     [DisplayName("右边间距")]
     [Range(-30, 100)]
