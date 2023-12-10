@@ -145,17 +145,17 @@ public class BarcodeGeneratorOption
     public int? MarginBottom { get; set; }
 
     /// <summary>
-    /// 左边间距
+    /// 左侧间距
     /// </summary>
-    [DisplayName("左边间距")]
+    [DisplayName("左侧间距")]
     [Range(-30, 100)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int? MarginLeft { get; set; }
 
     /// <summary>
-    /// 右边间距
+    /// 右侧间距
     /// </summary>
-    [DisplayName("右边间距")]
+    [DisplayName("右侧间距")]
     [Range(-30, 100)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int? MarginRight { get; set; }
