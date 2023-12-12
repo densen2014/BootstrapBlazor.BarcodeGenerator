@@ -20,10 +20,11 @@ public partial class BarCodeGenerator : IAsyncDisposable
     private IJSRuntime? JSRuntime { get; set; }
 
     private IJSObjectReference? Module { get; set; }
-    private DotNetObjectReference<BarCodeGenerator>? objRef;
+
+    private DotNetObjectReference<BarCodeGenerator>? Instance { get; set; }
 
     /// <summary>
-    ///
+    /// UI界面元素的引用对象
     /// </summary>
     public ElementReference Element { get; set; }
 
@@ -65,7 +66,7 @@ public partial class BarCodeGenerator : IAsyncDisposable
         {
             if (!firstRender) return;
             FirstRender=false;
-            objRef = DotNetObjectReference.Create(this);
+            Instance = DotNetObjectReference.Create(this);
             Module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.BarcodeGenerator/BarCodeGenerator.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
             await GenerateBarcode();
 
@@ -110,7 +111,7 @@ public partial class BarCodeGenerator : IAsyncDisposable
                     Options.Type = Type.Value;
                 if (Value != null)
                     Options.Value = Value;
-                var res = await Module!.InvokeAsync<string>("Gen", objRef, Element, Options);
+                var res = await Module!.InvokeAsync<string>("Gen", Instance, Element, Options);
                 if (OnResult != null)
                     await OnResult.Invoke(res);
             }
@@ -135,7 +136,7 @@ public partial class BarCodeGenerator : IAsyncDisposable
         {
             await Module.DisposeAsync();
         }
-        objRef?.Dispose();
+        Instance?.Dispose();
     }
 
 }
